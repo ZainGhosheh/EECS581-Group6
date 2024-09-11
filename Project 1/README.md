@@ -1,2 +1,1 @@
-# EECS581 - Group 6
-# Group Members: Zach Alwin, Kristin Bockmann, Lisa Phan, Nicholas Hausler, Vinayak Jha
+# EECS581 - Group 6 - Project 1

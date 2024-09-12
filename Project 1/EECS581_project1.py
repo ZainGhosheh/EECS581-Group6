@@ -87,7 +87,7 @@ def is_valid_position(pos):
 def valid_ship_placement(board, size, orientation, direction, start):
     row, col = get_coordinates(start)
     if orientation == 'H':
-        if direction == 'H':
+        if direction == 'R':
             if col + size > BOARD_SIZE:
                 return False  
             return all(board[row][col + i] == EMPTY for i in range(size))
@@ -141,10 +141,16 @@ def place_ships(board, ship_list):
             print(f"\nPlacing ship of size {ship_size}")
             display(board)
             start = input("Enter start position (e.g., A1): ")
-            orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
-            direction = input("Enter direction (H for right, L for left, D for down, U for up): ").upper()
-            
-            if not is_valid_position(start) or orientation not in ['H', 'V'] or direction not in ['H', 'L', 'D', 'U']:
+
+            #If the ship size is 1, there's no need to ask for orientation and direction
+            if ship_size <= 1:
+                orientation = 'H'
+                direction = 'R'
+            else:
+                orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
+                direction = input("Enter direction (R for right, L for left, D for down, U for up): ").upper()
+
+            if not is_valid_position(start) or orientation not in ['H', 'V'] or direction not in ['R', 'L', 'D', 'U']:
                 print("Invalid input. Try again.")
                 continue
             if valid_ship_placement(board, ship_size, orientation, direction, start):

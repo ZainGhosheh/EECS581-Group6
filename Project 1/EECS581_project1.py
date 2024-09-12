@@ -1,3 +1,5 @@
+import random
+
 BOARD_SIZE = 10
 MAX_SHIP = 5
 
@@ -37,6 +39,20 @@ def place_ship(board, size, orientation, start):
         for i in range(size):
             board[row + i][col] = "S"
 
+# Check if position is valid for placing the ship
+def is_valid_position(pos):
+    if len(pos) < 2 or len(pos) > 3:
+        return False
+    if pos[0].upper() not in COLS:
+        return False
+    try:
+        row = int(pos[1:])
+        if row < 1 or row > BOARD_SIZE:
+            return False
+    except ValueError:
+        return False
+    finally:
+        return True
 
 # Check if placing ship is valid
 def valid_ship_placement(board, size, orientation, start):
@@ -82,11 +98,14 @@ def place_ships(board, ship_list):
             display(board)
             start = input("Enter start position (e.g., A1): ")
             orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
+            if not is_valid_position(start) or orientation not in ['H', 'V']:
+                print("Invalid input. Try again.")
+                continue
             if valid_ship_placement(board, ship, orientation, start):
                 place_ship(board, ship, orientation, start)
                 break
             else:
-                print("Invalid placement. Try again.")   
+                print("Invalid placement. Try again.")
 
 def battleship_game():
     # Initialize player boards

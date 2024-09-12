@@ -1,10 +1,12 @@
-import random
-
 BOARD_SIZE = 10
 MAX_SHIP = 5
-ROWS = [str(i) for i in range(1, 11)]  # Row labels: 1-10
-COLS = [chr(i) for i in range(65, 75)]  # Column labels: A-J
 
+A_CHAR = 65
+
+ROWS = [str(i) for i in range(1, BOARD_SIZE+1)]  # Row labels: 1-10
+COLS = [chr(i) for i in range(A_CHAR, BOARD_SIZE + A_CHAR)]  # Column labels: A-J
+
+EMPTY = '.'
 
 # Utility function to display a board
 def display(board):
@@ -15,7 +17,7 @@ def display(board):
 
 # Create an empty 10x10 board
 def create_board():
-    return [["." for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
+    return [[EMPTY for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]
 
 
 # Convert letter and number to board coordinates
@@ -42,11 +44,11 @@ def valid_ship_placement(board, size, orientation, start):
     if orientation == 'H':
         if col + size > BOARD_SIZE:
             return False
-        return all(board[row][col + i] == "." for i in range(size))
+        return all(board[row][col + i] == EMPTY for i in range(size))
     else:
         if row + size > BOARD_SIZE:
             return False
-        return all(board[row + i][col] == "." for i in range(size))
+        return all(board[row + i][col] == EMPTY for i in range(size))
 
 
 # Fire at opponent's board
@@ -55,7 +57,7 @@ def fire(board, pos):
     if board[row][col] == "S":
         board[row][col] = "X"  # Hit
         return True
-    elif board[row][col] == ".":
+    elif board[row][col] == EMPTY:
         board[row][col] = "O"  # Miss
         return False
     return False  # Already fired at this position
@@ -73,6 +75,18 @@ def all_ships_sunk(board):
 def ship_sizes(num_ships):
     return list(range(1, num_ships + 1))
 
+def place_ships(board, ship_list):
+    for ship in ship_list:
+        while True:
+            print(f"Placing ship of size {ship}")
+            display(board)
+            start = input("Enter start position (e.g., A1): ")
+            orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
+            if valid_ship_placement(board, ship, orientation, start):
+                place_ship(board, ship, orientation, start)
+                break
+            else:
+                print("Invalid placement. Try again.")   
 
 def battleship_game():
     # Initialize player boards
@@ -95,33 +109,11 @@ def battleship_game():
 
     # Player 1's turn
     print("\nPlayer 1, place your ships.")
-    for ship in ship_list:
-        placed = False
-        while not placed:
-            print(f"Placing ship of size {ship}")
-            display(player1_board)
-            start = input("Enter start position (e.g., A1): ")
-            orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
-            if valid_ship_placement(player1_board, ship, orientation, start):
-                place_ship(player1_board, ship, orientation, start)
-                placed = True
-            else:
-                print("Invalid placement. Try again.")
+    place_ships(player1_board, ship_list)
 
     # Player 2's turn
     print("\nPlayer 2, place your ships.")
-    for ship in ship_list:
-        placed = False
-        while not placed:
-            print(f"Placing ship of size {ship}")
-            display(player2_board)
-            start = input("Enter start position (e.g., A1): ")
-            orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
-            if valid_ship_placement(player2_board, ship, orientation, start):
-                place_ship(player2_board, ship, orientation, start)
-                placed = True
-            else:
-                print("Invalid placement. Try again.")
+    place_ships(player2_board, ship_list)
 
     player_turn = 1
     while True:

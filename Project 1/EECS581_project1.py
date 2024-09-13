@@ -8,16 +8,20 @@ Author: Zach Alwin, Kristin Boeckmann, Lisa Phan, Nicholas Hausler, Vinayak Jha
 Creation Date: 09/11/2024
 """
 
-BOARD_SIZE = 10
-MAX_SHIP = 5
+# Declare size of board and maximum number of ships
+BOARD_SIZE = 10 # 10 by 10 sized board
+MAX_SHIP = 5 # Max number of ships on the board for a player's side
 
+# Declare ASCII character 'A', used to generate column labels
 A_CHAR = 65
 
-ROWS = [str(i) for i in range(1, BOARD_SIZE + 1)]  
-COLS = [chr(i) for i in range(A_CHAR, BOARD_SIZE + A_CHAR)] 
+# Generate row labels and column labels
+ROWS = [str(i) for i in range(1, BOARD_SIZE + 1)]  # 1 to 10
+COLS = [chr(i) for i in range(A_CHAR, BOARD_SIZE + A_CHAR)]  # A to J
 
-EMPTY = '.'
-SHIP = 'S'
+# Use characters to describe and empty space and a ship on the board
+EMPTY = '.'  # Empty space
+SHIP = 'S'  # Ship space
 
 # Utility function to display a board
 def display(board):

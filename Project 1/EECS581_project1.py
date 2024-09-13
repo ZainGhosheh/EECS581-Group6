@@ -1,19 +1,10 @@
 """
-Name of Program: 
-
-Description:
-
-Inputs:
-
-
-Outputs:
-
-
-Sources:
-- ChatGPT where marked and explained in the code
-
+Name of Program: Battleship!
+Description: 2-player, tactical war game that incorporates turn based strategic guessing with intellectual placement for an awesome and fun experience!
+Inputs: Opponent's/Player's guesses, Opponent's/Player's ship placements
+Outputs: Board w/ Hit and Miss trackers, Sunk ship notification, Current game status and winner
+Sources: Group 6 and ChatGPT where marked and explained in the code
 Author: Zach Alwin, Kristin Boeckmann, Lisa Phan, Nicholas Hausler, Vinayak Jha
-
 Creation Date: 09/11/2024
 """
 

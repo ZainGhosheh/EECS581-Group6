@@ -8,6 +8,7 @@ Author: Zach Alwin, Kristin Boeckmann, Lisa Phan, Nicholas Hausler, Vinayak Jha
 Creation Date: 09/11/2024
 """
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Declare size of board and maximum number of ships
 BOARD_SIZE = 10  # Set the board size to 10x10 grid
 MAX_SHIP = 5  # Define the maximum number of ships allowed for each player
@@ -23,6 +24,7 @@ COLS = [chr(i) for i in range(A_CHAR, BOARD_SIZE + A_CHAR)]  # Create a list of 
 EMPTY = '.'  # Character to represent an empty space on the board
 SHIP = 'S'  # Character to represent a ship's location on the board
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Utility function to display a board
 def display(board):
     # Print the column headers, joining the COLS list with spaces
@@ -31,11 +33,13 @@ def display(board):
     for i, row in enumerate(board):
         print(ROWS[i] + " " + " ".join(row))  
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Create an empty 10x10 board
 def create_board():
     # Use list comprehension to create a 10x10 grid filled with EMPTY characters
     return [[EMPTY for _ in range(BOARD_SIZE)] for _ in range(BOARD_SIZE)]  
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Convert letter and number to board coordinates
 def get_coordinates(pos):
     # Extract row number from the input position (e.g., A1 -> 0) by converting to 0-based index
@@ -44,6 +48,7 @@ def get_coordinates(pos):
     col = ord(pos[0].upper()) - A_CHAR  
     return row, col  # Return the calculated row and column indices
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Place a ship on the board and return its positions
 def place_ship(board, size, orientation, direction, start):
     # Get the starting row and column coordinates
@@ -69,6 +74,7 @@ def place_ship(board, size, orientation, direction, start):
                 positions.append((row - i, col))
     return positions  # Return the list of ship's positions
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Check if a given position is valid for placing a ship
 def is_valid_position(pos):
     if len(pos) < 2 or len(pos) > 3:  # Position should be of the form A1 or B10 (length of 2 or 3)
@@ -84,6 +90,7 @@ def is_valid_position(pos):
     finally:
         return True  # If all checks pass, return True
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Check if placing a ship is valid
 def valid_ship_placement(board, size, orientation, direction, start):
     # Get the starting coordinates of the ship
@@ -107,6 +114,7 @@ def valid_ship_placement(board, size, orientation, direction, start):
                 return False 
             return all(board[row - i][col] == EMPTY for i in range(size))  # Ensure all spaces are empty
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Fire at opponent's board
 def fire(board, pos, ships):
     # Get the target coordinates to fire at
@@ -125,16 +133,19 @@ def fire(board, pos, ships):
     else:
         return "already", None  # If the position has already been fired at
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Check if all ships are sunk
 def all_ships_sunk(ships):
     # Return True if all ships have no remaining positions (i.e., all are sunk)
     return all(not ship['positions'] for ship in ships)
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Ship configuration
 def ship_sizes(num_ships):
     # Return a list of ship sizes from 1 to the number of ships
     return list(range(1, num_ships + 1))
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Place ships on the board
 def place_ships(board, ship_list):
     ships = []  # List to store ships
@@ -160,6 +171,7 @@ def place_ships(board, ship_list):
                 print("Invalid placement. Try again.")  # Handle invalid placement
     return ships  # Return the list of ships
 
+# Comments Authored by Nicholas Hausler/ChatGPT
 # Get the number of ships for each player
 def get_num_ships():
     while True:

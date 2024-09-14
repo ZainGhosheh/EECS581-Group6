@@ -178,4 +178,96 @@ def get_num_ships():
         try:
             # Ask for a number of ships between 1 and MAX_SHIP
             num_ships = int(input(f"Enter number of ships per player (1 to {MAX_SHIP}): "))
-            if 1 <= num_ships <=
+            if 1 <= num_ships <= MAX_SHIP:
+                return num_ships  # Return valid number of current ships
+            else:
+                print(f"Please enter a number between 1 and {MAX_SHIP}.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+# Main function to run battleship game
+def battleship_game():
+    # Initialize player boards
+    player1_board = create_board()
+    player2_board = create_board()
+
+    # Initialize player tracking boards (for hits/misses)
+    player1_view = create_board()
+    player2_view = create_board()
+
+    # Ship placement
+    print("Welcome to Battleship!")
+
+    # Get the number of ships
+    num_ships = get_num_ships()
+
+    ship_list = ship_sizes(num_ships)
+
+    # Player 1's turn
+    print("\nPlayer 1, place your ships.")
+    player1_ships = place_ships(player1_board, ship_list)
+
+    # Player 2's turn
+    print("\nPlayer 2, place your ships.")
+    player2_ships = place_ships(player2_board, ship_list)
+
+    player_turn = 1
+    while True:
+        if player_turn == 1:
+            print("\n\n\n\n\nPlayer 1's turn!")
+            print("\nYour board:")
+            display(player1_board)  # Show Player 1's board with their ships
+            print("\nOpponent's board:")
+            display(player1_view)  # Show Player 1's view of Player 2's board
+            while True:
+                pos = input("Enter position to fire (e.g., A1): ")
+                result, sunk_ship_size = fire(player2_board, pos, player2_ships)
+                if result == "hit":
+                    print("Hit!")
+                    player1_view[get_coordinates(pos)[0]][get_coordinates(pos)[1]] = "X"
+                    break
+                elif result == "hit_and_sunk":
+                    print(f"Hit! You sunk a ship of size {sunk_ship_size}!")
+                    player1_view[get_coordinates(pos)[0]][get_coordinates(pos)[1]] = "X"
+                    break
+                elif result == "miss":
+                    print("Miss!")
+                    player1_view[get_coordinates(pos)[0]][get_coordinates(pos)[1]] = "O"
+                    break
+                else:
+                    print("You've already fired at that position. Choose a different spot.")
+            if all_ships_sunk(player2_ships):
+                print("Player 1 wins! All ships sunk.")
+                break
+            input("Press Enter to switch to Player 2's turn...")
+            player_turn = 2
+        else:
+            print("\n\n\n\n\nPlayer 2's turn!")
+            print("\nYour board:")
+            display(player2_board)  # Show Player 2's board with their ships
+            print("\nOpponent's board:")
+            display(player2_view)  # Show Player 2's view of Player 1's board
+            while True:
+                pos = input("Enter position to fire (e.g., A1): ")
+                result, sunk_ship_size = fire(player1_board, pos, player1_ships)
+                if result == "hit":
+                    print("Hit!")  # Hit feedback 
+                    player2_view[get_coordinates(pos)[0]][get_coordinates(pos)[1]] = "X"
+                    break
+                elif result == "hit_and_sunk":
+                    print(f"Hit! You sunk a ship of size {sunk_ship_size}!")
+                    player2_view[get_coordinates(pos)[0]][get_coordinates(pos)[1]] = "X"
+                    break
+                elif result == "miss":
+                    print("Miss!")  # Miss feedback
+                    player2_view[get_coordinates(pos)[0]][get_coordinates(pos)[1]] = "O"
+                    break
+                else:
+                    print("You've already fired at that position. Choose a different spot.")
+            if all_ships_sunk(player1_ships):
+                print("Player 2 wins! All ships sunk.")
+                break
+            input("Press Enter to switch to Player 1's turn...")
+            player_turn = 1
+
+battleship_game()

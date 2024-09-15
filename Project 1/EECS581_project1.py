@@ -271,18 +271,22 @@ class ValidationError(Exception): ...
 POS_RE = r"^([A-J])([1-9]|(10))$"
 
 
+# Validates user input, so that it matches valid coordinates
 def validate_input(value: str):
     matches = re.search(POS_RE, value)
     if matches is None:
+        # raise a custom error message
         raise ValidationError()
     return value
 
 
+# Blocks till the user has entered a valid coordinate
 def block_till_valid(msg, on_fail):
     while True:
         raw = input(msg)
         try:
             return validate_input(raw)
+        # didn't get a match, try again.
         except ValidationError:
             print(on_fail)
             continue

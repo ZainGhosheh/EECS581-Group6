@@ -8,6 +8,9 @@ Author: Zach Alwin, Kristin Boeckmann, Lisa Phan, Nicholas Hausler, Vinayak Jha
 Creation Date: 09/11/2024
 """
 
+# This module is used for simpler validation of user inputs
+import re
+
 # Comments Authored by Nicholas Hausler/ChatGPT
 # Declare size of board and maximum number of ships
 BOARD_SIZE = 10  # Set the board size to 10x10 grid
@@ -197,9 +200,9 @@ def place_ships(board, ship_list):
         while True:
             print(f"\nPlacing ship of size {ship_size}")
             display(board)  # Display the current board state
-            start = input(
-                "Enter start position (e.g., A1): "
-            )  # Get starting position input
+            start = block_till_valid(
+                "Enter start position (e.g., A1): ", "Please enter a valid value"
+            )
             if (
                 ship_size <= 1
             ):  # If the ship size is 1, automatically set orientation and direction
@@ -262,6 +265,29 @@ def get_and_place_ship(player, player_board):
     return ships
 
 
+class ValidationError(Exception): ...
+
+
+POS_RE = r"^([A-J])([1-9]|(10))$"
+
+
+def validate_input(value: str):
+    matches = re.search(POS_RE, value)
+    if matches is None:
+        raise ValidationError()
+    return value
+
+
+def block_till_valid(msg, on_fail):
+    while True:
+        raw = input(msg)
+        try:
+            return validate_input(raw)
+        except ValidationError:
+            print(on_fail)
+            continue
+
+
 # Main function to run battleship game
 def battleship_game():
 
@@ -283,6 +309,10 @@ def battleship_game():
     player2_ships = get_and_place_ship("Player 2", player2_board)
 
     player_turn = 1
+
+    _block_till_valid = lambda: block_till_valid(
+        "Enter position to fire (e.g., A1): ", "Invalid value, please try again."
+    )
     while True:
         if player_turn == 1:
             print("\n\n\n\n\nPlayer 1's turn!")
@@ -291,7 +321,7 @@ def battleship_game():
             print("\nOpponent's board:")
             display(player1_view)  # Show Player 1's view of Player 2's board
             while True:
-                pos = input("Enter position to fire (e.g., A1): ")
+                pos = _block_till_valid()
                 result, sunk_ship_size = fire(player2_board, pos, player2_ships)
                 if result == "hit":
                     print("Hit!")
@@ -321,7 +351,7 @@ def battleship_game():
             print("\nOpponent's board:")
             display(player2_view)  # Show Player 2's view of Player 1's board
             while True:
-                pos = input("Enter position to fire (e.g., A1): ")
+                pos = _block_till_valid()
                 result, sunk_ship_size = fire(player1_board, pos, player1_ships)
                 if result == "hit":
                     print("Hit!")  # Hit feedback

@@ -234,7 +234,7 @@ def place_ships(board, ship_list):
             else:
                 # Default orientation and direction for size 1 (no need to ask)
                 orientation = "H"  # Default to horizontal if size is 1
-                direction = "R"  # Default to right if size is 1
+                direction = "R"  # Default to right if size is 
 
             if is_valid_position(start) and valid_ship_placement(
                 board, ship_size, orientation, direction, start

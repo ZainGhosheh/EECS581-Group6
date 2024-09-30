@@ -1,0 +1,61 @@
+Week (9/22 - 9/29)
+
+Tuesday (9/24)
+All Team Members (Zain, Abdulahi, Olufewa, Mahgoub):
+Task: Team meeting with GTA
+Time: 20 minutes
+
+All Team Members (Zain, Abdulahi, Olufewa, Mahgoub):
+Task: Group meeting looking over code and discussing plans
+Time: 1 hour 30 minutes
+
+
+Wednesday (9/25)
+Team Member 1 (Zain):
+Task: Set up Medium AI
+Time: 2 hour
+
+Team Member 2 (Mahgoub):
+Task: Set up hard Ai
+Time: 2 hours
+
+Team Member 3 (Olufewa):
+Task: Drew out UML diagram and Easy Ai
+Time: 1.5 hours
+
+Team Member 4 (Abdulahi):
+Task: Set up Medium AI
+Time: 2 hour
+
+Friday (9/27)
+Team Member 1 (Zain):
+Task: Set up AI placing ships
+Time: 1.5 hour
+
+Team Member 2 (Mahgoub):
+Task:  Debug Hard Ai
+Time: 2 hours
+
+Team Member 3 (Olufewa):
+Task:  Debug Medium AI
+Time: 2 hours
+
+Team Member 4 (Abdulahi):
+Task: Set up different Special shops
+Time: 1.5 hour
+
+Sunday (9/29)
+Team Member 1 (Zain):
+Task: Final Debugging and testing
+Time: 1.5 hour
+
+Team Member 2 (Mahgoub):
+Task:  Documentations
+Time: 0.5 hours
+
+Team Member 3 (Olufewa):
+Task:  Testing
+Time: 2 hours
+
+Team Member 4 (Abdulahi):
+Task: Finalization of special shot and testing

@@ -1,0 +1,59 @@
+Team Member 1: Abdulahi
+Total Estimated Hours: 8 hours
+Team meeting with GTA:
+A 20-minute session with the GTA to discuss project progress, gather feedback, and clarify any confusion or concerns.
+Group meeting looking over code and discussing plans:
+A 1.5-hour meeting where the team reviewed the current state of the project’s code. Discussed upcoming tasks and delegated responsibilities for the next phase of AI setup and debugging.
+Set up Medium AI:
+Dedicated 2 hours to configuring and setting up the Medium AI. This involved adjusting AI difficulty parameters, implementing AI behavior, and ensuring the AI functions as expected during gameplay.
+Set up different Special shops:
+Spent 1.5 hours designing and implementing special shops in the game, focusing on unique features and items that enhance gameplay. This included integrating the shops with existing gameplay mechanics and testing their functionality.
+
+Finalization of special shot and testing:
+Used 1.5 hours to finalize the special shot feature in the game, ensuring it aligns with the game's design and testing its effectiveness in various scenarios.
+
+
+
+
+Team Member 2: Mahgoub
+Total Estimated Hours: 8 hours
+Team meeting with GTA:
+Participated in a 20-minute session with the GTA to gather insights, share progress, and get input on challenges faced.
+Group meeting looking over code and discussing plans:
+Took part in a 1.5-hour team discussion to evaluate the codebase, plan upcoming tasks, and address key decisions regarding AI setup and debugging.
+Set up Hard AI:
+Spent 2 hours setting up and configuring the Hard AI. This task involved programming more complex behavior, fine-tuning AI decision-making algorithms, and testing the AI in challenging game environments to ensure it offers a robust challenge to players.
+Debug Hard AI:
+Allocated 2 hours to debugging the Hard AI. This involved identifying and resolving issues related to AI decision-making, balancing the difficulty, and ensuring stability during prolonged gameplay sessions.
+Documentations:
+Used 30 minutes to update and finalize project documentation, focusing on documenting changes made to the Hard AI setup and debugging process.
+
+
+
+Team Member 3: Olufewa
+Total Estimated Hours: 8 hours 
+Team meeting with GTA:
+Spent 20 minutes discussing project progress with the GTA, addressing issues or questions raised by the team, and getting guidance on next steps.
+Group meeting looking over code and discussing plans:
+Participated in a 1.5-hour session to review the code and plan the project’s next steps. This discussion focused on ensuring alignment on the AI’s design and functionality.
+Drew out UML diagram and Easy AI setup:
+Spent 1.5 hours creating a UML diagram to map out the system architecture, focusing on how different AI difficulty levels (Easy, Medium, Hard) would interact with the game’s logic. Additionally, set up the Easy AI with basic behaviors.
+Debug Medium AI:
+Spent 2 hours debugging the Medium AI, focusing on resolving inconsistencies in its performance, ensuring proper integration with the game logic, and fixing any gameplay-affecting bugs.
+Testing:
+Dedicated 2 hours to testing various game elements, specifically focusing on AI performance across different difficulty levels. This testing ensured that the AI was responsive, balanced, and worked well with other gameplay components.
+
+
+
+Team Member 4: Zain
+Total Estimated Hours: 8 hours
+Team meeting with GTA:
+Engaged in a 20-minute discussion with the GTA to review the project’s current status, gather feedback, and address any questions about the AI implementation process.
+Group meeting looking over code and discussing plans:
+Took part in the 1.5-hour team meeting to review the code and strategize for the upcoming AI tasks. This included discussions on AI logic, debugging strategies, and general project planning.
+Set up Medium AI:
+Spent 2 hours configuring the Medium AI. This involved creating algorithms to control AI decision-making, adjusting difficulty parameters, and testing to ensure the AI functioned appropriately at the medium level.
+Set up AI placing ships:
+Used 1.5 hours to implement the ship placement logic for the AI, ensuring that the AI could place ships strategically within the game. This task also included testing to ensure the placement was random but challenging for players.
+Final Debugging and testing:
+Allocated 1.5 hours for final debugging and testing of the overall AI system, focusing on identifying and resolving any remaining issues with the AI behavior across all difficulty levels. This involved ensuring the AI was competitive and balanced.
